@@ -1,3 +1,4 @@
+// File: library/build.gradle
 plugins {
     id 'com.android.library'
     id 'maven-publish'
@@ -22,6 +23,7 @@ android {
 dependencies {
 }
 
+// Maven publishing setup
 project.afterEvaluate {
     publishing {
         publications {
@@ -30,4 +32,11 @@ project.afterEvaluate {
             }
         }
     }
+}
+
+// ✅ Task to generate JAR
+task makeJar(type: Jar) {
+    archiveBaseName.set("axml")
+    from compileReleaseJavaWithJavac.destinationDirectory
+    destinationDirectory.set(file("$buildDir/libs"))
 }
