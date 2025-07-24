@@ -1,3 +1,5 @@
+# File: .github/workflows/release.yml
+
 name: Java CI with Gradle (Java 17)
 
 on:
@@ -37,10 +39,10 @@ jobs:
         run: ./gradlew test
 
       - name: Build JAR
-        run: ./gradlew jar
+        run: ./gradlew makeJar
 
       - name: Upload JAR as artifact
         uses: actions/upload-artifact@v4
         with:
           name: axmlprinter-jar
-          path: build/libs/*.jar
+          path: library/build/libs/*.jar
